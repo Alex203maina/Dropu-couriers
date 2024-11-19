@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
-    --primary: #FF3E41;
-    --secondary: #51CFED;
+    --primary: #fac30e;
+    --secondary: #120540;
     --light: #F8F2F0;
     --dark: #060315;
 }
@@ -9,7 +9,9 @@
 .fw-medium {
     font-weight: 600 !important;
 }
-
+.small-text {
+    font-size: 0.8em; /* Adjust the value as needed */
+}
 .back-to-top {
     position: fixed;
     display: none;
