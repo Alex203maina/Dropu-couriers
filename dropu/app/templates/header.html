@@ -8,19 +8,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="{{ '/'}}" class="nav-item nav-link active">Home</a>
-                <a href="{{ '/about/'}}" class="nav-item nav-link">About</a>
-                <a href="{{ '/services/'}}" class="nav-item nav-link">Services</a>
+                <a href="{{ '/'}}" class="nav-item nav-link {% if request.path == '/'%} active{% endif %}">Home</a>
+                <a href="{{ '/about/'}}" class="nav-item nav-link {% if 'about' in request.path%} active{% endif %}">About</a>
+                <a href="{{ '/services/'}}" class="nav-item nav-link{% if 'services' in request.path%} active{% endif %}">Services</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu fade-up m-0">
-                        <a href="{{ '/features/'}}" class="dropdown-item">Features</a>
-                        <a href="quote.html" class="dropdown-item">Free Quote</a>
-                        <a href="{{'/teams/'}}" class="dropdown-item">Our Team</a>
+                        <a href="{{ '/features/'}}" class="dropdown-item nav-link{% if 'features' in request.path%} active{% endif %}">Features</a>
+                        <a href="{{'/teams/'}}" class="dropdown-item nav-link {% if 'teams' in request.path%} active{% endif %}">Our Teams</a>
                     </div>
                 </div>
                 
-                <a href="{{ '/contact/'}}" class="nav-item nav-link">Contact</a>
+                <a href="{{ '/contact/'}}" class="nav-item nav-link {% if 'contact' in request.path%} active{% endif %}">Contact</a>
             </div>
             <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+012 345 6789</h4>
         </div>
