@@ -122,7 +122,38 @@
         </div>
     </div>
     <!-- Fact End -->
-
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <h6 class="text-secondary text-uppercase mb-3">{{ fact_section.subtitle }}</h6>
+                    <h1 class="mb-5">{{ fact_section.title }}</h1>
+                    <p class="mb-5">{{ fact_section.description }}</p>
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
+                        <div class="ps-4">
+                            <h6>{{ fact_section.contact_title }}</h6>
+                            <h3 class="text-primary m-0">{{ fact_section.contact_number }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4 align-items-center">
+                        {% for box in fact_section.fact_boxes.all %}
+                            <div class="col-sm-6">
+                                <div class="{{ box.background_class }} p-4 wow fadeIn" data-wow-delay="0.3s">
+                                    <i class="{{ box.icon_class }} fa-2x text-white mb-3"></i>
+                                    <h2 class="text-white mb-2" data-toggle="counter-up">{{ box.value }}</h2>
+                                    <p class="text-white mb-0">{{ box.title }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <!-- Service Start -->
     <div class="container-xxl py-5">

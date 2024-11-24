@@ -33,3 +33,24 @@ class LogisticsPrice(models.Model):
 
     def __str__(self):
         return self.location
+class FactBox(models.Model):
+    title = models.CharField(max_length=255)
+    value = models.PositiveIntegerField()
+    icon_class = models.CharField(max_length=50)  # e.g., "fa fa-users"
+    background_class = models.CharField(max_length=50, default="bg-primary")  # e.g., "bg-primary"
+    order = models.PositiveIntegerField(default=0)  # To manage the order of display
+
+    def __str__(self):
+        return self.title
+
+
+class FactSection(models.Model):
+    title = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField()
+    contact_title = models.CharField(max_length=255, blank=True, null=True)
+    contact_number = models.CharField(max_length=20, blank=True, null=True)
+    fact_boxes = models.ManyToManyField(FactBox, related_name="sections")
+
+    def __str__(self):
+        return self.title
