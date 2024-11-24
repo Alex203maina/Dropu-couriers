@@ -1,15 +1,21 @@
 from django.shortcuts import render
-from .models import Services, FeatureSection, Feature
+from .models import Services, FeatureSection, Feature, FactSection
 from django.shortcuts import render, get_object_or_404
 from .models import LogisticsPrice
 from .forms import LogisticsSearchForm
 from django.db.models import Q
+
 # Create your views here.
 def index(request):
     services = Services.objects.all().order_by('service_title')[:3]
     feature_section = FeatureSection.objects.first()
     features = Feature.objects.all()
-    return render(request, 'index.html', {"services": services, "feature_section": feature_section, "features": features})
+    fact_section = FactSection.objects.prefetch_related('fact_boxes').first()
+    return render(request, 'index.html', {"services": services,
+                                        "feature_section": feature_section, 
+                                        "features": features,
+                                        "fact_section": fact_section
+                                        })
 
 def home(request):
     return render(request, 'home.html')
